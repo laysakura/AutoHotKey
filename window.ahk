@@ -33,6 +33,10 @@ halfMaximizeToSide(position) {
     }
 }
 
+;; ==============================================
+;; Resize / Move windows
+;; ==============================================
+
 +^h::
     halfMaximizeToSide("l")
     Return
