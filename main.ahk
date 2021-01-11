@@ -75,7 +75,10 @@ LCtrl & Left::ShiftAltTab
   Else
   {
     If is_pre_x
-      find_file()
+      If isActiveChrome()
+        Send, ^t  ; open tab
+      Else
+        find_file()
     Else
       forward_char()
   }
