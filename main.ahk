@@ -270,4 +270,21 @@ k::
     Send, ^w ; close tab
   }
   Else
-    Return
+    Send %A_ThisHotkey%
+  Return
+r::
+  If is_pre_x and isActiveChrome() {
+    is_pre_x = 0
+    Send, +{F5} ; super reload
+  }
+  Else
+    Send %A_ThisHotkey%
+  Return
+b::
+  If is_pre_x and isActiveChrome() {
+    is_pre_x = 0
+    Send, +^t ; re-open closed tab
+  }
+  Else
+    Send %A_ThisHotkey%
+  Return
