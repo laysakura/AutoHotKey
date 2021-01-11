@@ -222,13 +222,23 @@ LCtrl & Left::ShiftAltTab
   If emacs_ignore()
     Send %A_ThisHotkey%
   Else
-    previous_line()
+    If is_pre_x and isActiveChrome() {
+      is_pre_x = 0
+      Send, +^{Tab} ; prev tab
+    }
+    Else
+      previous_line()
   Return
 ^n::
   If emacs_ignore()
     Send %A_ThisHotkey%
   Else
-    next_line()
+    If is_pre_x and isActiveChrome() {
+      is_pre_x = 0
+      Send, ^{Tab} ; next tab
+    }
+    Else
+      next_line()
   Return
 ^b::
   If emacs_ignore()
