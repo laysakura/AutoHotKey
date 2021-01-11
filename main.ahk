@@ -264,9 +264,10 @@ LCtrl & Left::ShiftAltTab
     scroll_up()
   Return
 
-
-; f::
-;     if isActiveVSCode()
-;         Send,{enter}
-;     else
-;         Return
+k::
+  If is_pre_x and isActiveChrome() {
+    is_pre_x = 0
+    Send, ^w ; close tab
+  }
+  Else
+    Return
