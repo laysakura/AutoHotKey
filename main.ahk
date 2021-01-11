@@ -67,5 +67,5 @@ VKF2 up::
 ; Windowのtoggle
 ;----------------------------------------------
 
-LCtrl & J::AltTab
-LCtrl & K::ShiftAltTab
+LCtrl & Right::AltTab
+LCtrl & Left::ShiftAltTab
