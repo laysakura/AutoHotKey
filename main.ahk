@@ -43,6 +43,9 @@ VKF4::Send,{``}    ;         半角/全角     -> `
 ; Windowの移動・リサイズ
 ;----------------------------------------------
 
-+^h::windowToPresetPosition("l")
-+^l::windowToPresetPosition("r")
-+^f::windowToPresetPosition("f")
++^h::resetWindowSizePosState("left")
++^l::resetWindowSizePosState("right")
++^f::resetWindowSizePosState("center")
+
++^Left::updateWindowSizePosState("L")
++^Right::updateWindowSizePosState("R")
