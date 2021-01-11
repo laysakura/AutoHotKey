@@ -244,7 +244,12 @@ LCtrl & Left::ShiftAltTab
   If emacs_ignore()
     Send %A_ThisHotkey%
   Else
-    backward_char()
+    If is_pre_x and isActiveChrome() {
+      is_pre_x = 0
+      Send, !{Left} ; back
+    }
+    Else
+      backward_char()
   Return
 ^v::
   If emacs_ignore()
