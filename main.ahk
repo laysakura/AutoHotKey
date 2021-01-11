@@ -62,3 +62,10 @@ VKF2 up::
 
 +^Left::updateWindowSizePosState("L")
 +^Right::updateWindowSizePosState("R")
+
+;----------------------------------------------
+; Windowのtoggle
+;----------------------------------------------
+
+LCtrl & J::AltTab
+LCtrl & K::ShiftAltTab
