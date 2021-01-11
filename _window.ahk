@@ -62,9 +62,9 @@ updateWindowSizePosState(cmd) {
 
     if (_window_state == "center") {
         if (cmd == "L") {
-            resetWindowSizePosState("right")
-        } else if (cmd == "R") {
             resetWindowSizePosState("left")
+        } else if (cmd == "R") {
+            resetWindowSizePosState("right")
         }
     } else if ((_window_state == "left" && cmd == "L") || (_window_state == "right" && cmd == "R")) {
         ; shrink
