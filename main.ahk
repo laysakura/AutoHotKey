@@ -56,8 +56,8 @@ VKF4::Send,{``}    ;         半角/全角     -> `
 ; Windowのtoggle
 ;----------------------------------------------
 
-LCtrl & Right::AltTab
-LCtrl & Left::ShiftAltTab
+LWin & j::AltTab
+LWin & k::ShiftAltTab
 
 ;----------------------------------------------
 ; emacs-like キーバインド
