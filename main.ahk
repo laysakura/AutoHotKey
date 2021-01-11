@@ -83,7 +83,8 @@ LWin & k::ShiftAltTab
   {
     If is_pre_x
       If isActiveChrome()
-        Send, ^t  ; open tab
+         is_pre_x = 0
+         Send, ^t  ; open tab
       Else
         find_file()
     Else
