@@ -1,4 +1,4 @@
-#Include, _window.ahk
+#Include, _windowSizePos.ahk
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Hot keys
@@ -38,6 +38,19 @@ VKF4::Send,{``}    ;         半角/全角     -> `
 *::Send,{"}       ; Shift + :         [*] -> "
 +]::|             ; Shift + ]         [}] -> |
 ]::\              ;                   []] -> \
+
+
+;----------------------------------------------
+; Surface のキーボードがAltキーが右寄りで押し間違えるので、「カタカナひらがな」キーもALtにする
+;----------------------------------------------
+VKF2::
+    SetKeyDelay -1
+    Send {Blind}{Alt Down}
+    Return
+VKF2 up::
+    SetKeyDelay -1
+    Send {Blind}{Alt Up}
+    Return
 
 ;----------------------------------------------
 ; Windowの移動・リサイズ
