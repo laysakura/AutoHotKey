@@ -1,4 +1,6 @@
 #Include, _windowSizePos.ahk
+#Include, _windowApp.ahk
+#Include, _emacs.ahk
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Hot keys
@@ -39,19 +41,6 @@ VKF4::Send,{``}    ;         半角/全角     -> `
 +]::|             ; Shift + ]         [}] -> |
 ]::\              ;                   []] -> \
 
-
-;----------------------------------------------
-; Surface のキーボードがAltキーが右寄りで押し間違えるので、「カタカナひらがな」キーもALtにする
-;----------------------------------------------
-VKF2::
-    SetKeyDelay -1
-    Send {Blind}{Alt Down}
-    Return
-VKF2 up::
-    SetKeyDelay -1
-    Send {Blind}{Alt Up}
-    Return
-
 ;----------------------------------------------
 ; Windowの移動・リサイズ
 ;----------------------------------------------
@@ -69,3 +58,197 @@ VKF2 up::
 
 LCtrl & Right::AltTab
 LCtrl & Left::ShiftAltTab
+
+;----------------------------------------------
+; emacs-like キーバインド
+;----------------------------------------------
+
+^x::
+  If emacs_ignore()
+    Send %A_ThisHotkey%
+  Else
+    is_pre_x = 1
+  Return 
+^f::
+  If emacs_ignore()
+    Send %A_ThisHotkey%
+  Else
+  {
+    If is_pre_x
+      find_file()
+    Else
+      forward_char()
+  }
+  Return  
+^c::
+  If emacs_ignore()
+    Send %A_ThisHotkey%
+  Else
+  {
+    If is_pre_x
+      kill_emacs()
+  }
+  Return  
+^d::
+  If emacs_ignore()
+    Send %A_ThisHotkey%
+  Else
+    delete_char()
+  Return
+^h::
+  If emacs_ignore()
+    Send %A_ThisHotkey%
+  Else
+    delete_backward_char()
+  Return
+^k::
+  If emacs_ignore()
+    Send %A_ThisHotkey%
+  Else
+    kill_line()
+  Return
+;; ^o::
+;;   If emacs_ignore()
+;;     Send %A_ThisHotkey%
+;;   Else
+;;     open_line()
+;;   Return
+^g::
+  If emacs_ignore()
+    Send %A_ThisHotkey%
+  Else
+    quit()
+  Return
+;; ^j::
+;;   If emacs_ignore()
+;;     Send %A_ThisHotkey%
+;;   Else
+;;     newline_and_indent()
+;;   Return
+^m::
+  If emacs_ignore()
+    Send %A_ThisHotkey%
+  Else
+    newline()
+  Return
+^i::
+  If emacs_ignore()
+    Send %A_ThisHotkey%
+  Else
+    indent_for_tab_command()
+  Return
+^s::
+  If emacs_ignore()
+    Send %A_ThisHotkey%
+  Else
+  {
+    If is_pre_x
+      save_buffer()
+    Else
+      isearch_forward()
+  }
+  Return
+^r::
+  If emacs_ignore()
+    Send %A_ThisHotkey%
+  Else
+    isearch_backward()
+  Return
+^w::
+  If emacs_ignore()
+    Send %A_ThisHotkey%
+  Else
+    kill_region()
+  Return
+!w::
+  If emacs_ignore()
+    Send %A_ThisHotkey%
+  Else
+    kill_ring_save()
+  Return
+^y::
+  If emacs_ignore()
+    Send %A_ThisHotkey%
+  Else
+    yank()
+  Return
+^/::
+  If emacs_ignore()
+    Send %A_ThisHotkey%
+  Else
+    undo()
+  Return  
+  
+;$^{Space}::
+;^vk20sc039::
+^vk20::
+  If emacs_ignore()
+    Send {CtrlDown}{Space}{CtrlUp}
+  Else
+  {
+    If is_pre_spc
+      is_pre_spc = 0
+    Else
+      is_pre_spc = 1
+  }
+  Return
+^@::
+  If emacs_ignore()
+    Send %A_ThisHotkey%
+  Else
+  {
+    If is_pre_spc
+      is_pre_spc = 0
+    Else
+      is_pre_spc = 1
+  }
+  Return
+^a::
+  If emacs_ignore()
+    Send %A_ThisHotkey%
+  Else
+    move_beginning_of_line()
+  Return
+^e::
+  If emacs_ignore()
+    Send %A_ThisHotkey%
+  Else
+    move_end_of_line()
+  Return
+^p::
+  If emacs_ignore()
+    Send %A_ThisHotkey%
+  Else
+    previous_line()
+  Return
+^n::
+  If emacs_ignore()
+    Send %A_ThisHotkey%
+  Else
+    next_line()
+  Return
+^b::
+  If emacs_ignore()
+    Send %A_ThisHotkey%
+  Else
+    backward_char()
+  Return
+^v::
+  If emacs_ignore()
+    Send %A_ThisHotkey%
+  Else
+    scroll_down()
+  Return
+!v::
+  If emacs_ignore()
+    Send %A_ThisHotkey%
+  Else
+    scroll_up()
+  Return
+
+
+; f::
+;     if isActiveVSCode()
+;         Send,{enter}
+;     else
+;         Return
